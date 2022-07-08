@@ -1,0 +1,49 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background: rgb(255,214,0);
+    background: linear-gradient(90deg, rgba(255,214,0,1) 0%, rgba(231,121,42,1) 100%); 
+}
+
+.titulo{
+    text-align: center;
+    color: darkblue;
+    margin: 5px;
+    font-size: 5em;
+}
+
+.contenedor{
+    margin: 7em;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+#botonMazo{
+    margin: 20px;
+    height: 40vh;
+    width: 30vh;
+    background-color: darkgreen;
+
+}
+
+#descarte{
+    margin: 20px;
+    height: 40vh;
+    width: 30vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#jugador2{
+    display: none;
+}
+
+#poolCartas li{
+    display: inline-block;
+    margin: 10px;
+}
+
