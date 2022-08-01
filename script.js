@@ -88,7 +88,6 @@ function cartaRandom(){
 
 }
 
-
 //Generador de cartas aleatorias
 function sacarCartas(){
     let mazoCartas = []
