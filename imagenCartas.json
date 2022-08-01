@@ -1,0 +1,14 @@
+[
+    { "numero": 1, "foto": "./imagenes/uno.png" },
+    { "numero": 2, "foto": "./imagenes/dos.png"},
+    { "numero": 3, "foto": "./imagenes/tres.png"},
+    { "numero": 4, "foto": "./imagenes/cuatro.png"},
+    { "numero": 5, "foto": "./imagenes/cinco.png"},
+    { "numero": 6, "foto": "./imagenes/seis.png"},
+    { "numero": 7, "foto": "./imagenes/siete.png"},
+    { "numero": 8, "foto": "./imagenes/ocho.png"},
+    { "numero": 9, "foto": "./imagenes/nueve.png"},
+    { "numero": 10, "foto": "./imagenes/diez.png"},
+    { "numero": 11, "foto": "./imagenes/once.png"},
+    { "numero": 12, "foto": "./imagenes/doce.png"}
+]

@@ -2,7 +2,9 @@ let carta1;
 let mazo = document.getElementById ('botonMazo');
 let pozo = document.querySelector ('.pozoDescarte');
 let borrar = document.getElementById('borrarHistorial');
+let regla = document.getElementById ('daRules');
 const cementerioCartas = document.getElementById("poolCartas");
+let mostrarCarta = document.getElementById("descarte");
 let cartaSacada = [];
 
 
@@ -16,44 +18,68 @@ function cartaRandom(){
     }
     generarCarta(){
 
+        //genera un numero aleatorio
         this.valor = parseInt(Math.random()*12)+1;
         let carta = this.valor;
-        
-        if (this.valor == 1){
-            pozo.innerHTML = `sacaste un ${this.valor} toma  ${this.valor} tragos`;
+
+        fetch('/imagenCartas.json')
+        .then((img) => img.json())
+        .then(imagenCarta => {
+
+        //comparo el valor que se genera automaticamente y lo comparo con el valor de las imagenes del json
+        if (this.valor == imagenCarta[0].numero){   pozo.innerHTML = " ";
+        //recupera la imagen del valor de la carta
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[0].foto}" alt="${imagenCarta[0].numero}">`)
+            //Imprime la regla que va con el valor de la carta
+            regla.innerHTML = `Tomas  ${this.valor} tragos`;           
+            
+        }else if(this.valor == imagenCarta[1].numero){ pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[1].foto}" alt="${imagenCarta[1].numero}">`)
+            regla.innerHTML = `Toma ${this.valor} tragos`;
+
+        }else if(this.valor == imagenCarta[2].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[2].foto}" alt="${imagenCarta[2].numero}">`)
+            regla.innerHTML = `Toma ${this.valor} tragos`;
+
+        }else if (this.valor == imagenCarta[3].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[3].foto}" alt="${imagenCarta[3].numero}">`)
+            regla.innerHTML = `Reparti  ${this.valor} tragos`;
+
+        }else if(this.valor == imagenCarta[4].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[4].foto}" alt="${imagenCarta[4].numero}">`)
+            regla.innerHTML = `Reparti  ${this.valor} tragos`;
+
+        }else if(this.valor == imagenCarta[5].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[5].foto}" alt="${imagenCarta[5].numero}">`)
+            regla.innerHTML = `Reparti  ${this.valor} tragos`;
+
+        }else if (this.valor == imagenCarta[6].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[6].foto}" alt="${imagenCarta[6].numero}">`)
+            regla.innerHTML = `Podes rebotar tragos (cuando te los repartan)`;
+
+        }else if(this.valor == imagenCarta[7].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[7].foto}" alt="${imagenCarta[7].numero}">`)
+            regla.innerHTML = `Hace una accion y el ultimo que la repita toma`;
     
-        }else if(this.valor == 2){
-            pozo.innerHTML = `sacaste un ${this.valor} toma ${this.valor} tragos`;
+        }else if(this.valor == imagenCarta[8].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[8].foto}" alt="${imagenCarta[8].numero}">`)
+            regla.innerHTML = `Hace una accion y el ultimo que la repita toma`;
     
-        }else if(this.valor == 3){
-            pozo.innerHTML = `sacaste un ${this.valor} toma ${this.valor} tragos`;
-    
-        }else if (this.valor == 4){
-            pozo.innerHTML = `sacaste un ${this.valor} reparti  ${this.valor} tragos`;
-           
-        }else if(this.valor == 5){
-            pozo.innerHTML = `sacaste un ${this.valor} reparti ${this.valor} tragos`;
-    
-        }else if(this.valor == 6){
-            pozo.innerHTML = `sacaste un ${this.valor} reparti ${this.valor} tragos`;
-    
-        }else if (this.valor == 7){
-            pozo.innerHTML = `sacaste un ${this.valor} podes rebotar tragos`;
-         
-        }else if(this.valor == 8){
-            pozo.innerHTML = `sacaste un ${this.valor} Hace una accion y el ultimo que la haga toma`;
-    
-        }else if(this.valor == 9 ){
-            pozo.innerHTML = `sacaste un ${this.valor} Hace una accion y el ultimo que la haga toma`;
-    
-        }else if(this.valor == 10 ){
-            pozo.innerHTML = `sacaste un ${this.valor} Crea una regla que dure por el resto del juego`;
-        }else if (this.valor == 11){
-            pozo.innerHTML = `sacaste un ${this.valor} podes rebotar tragos`;
-        }else {
-            pozo.innerHTML = `sacaste un ${this.valor} Sos Barney, Antes que alguien saque una carta tiene que decir toma Barney`
+        }else if(this.valor == imagenCarta[9].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[9].foto}" alt="${imagenCarta[9].numero}">`)
+            regla.innerHTML = `Crea una regla que dure por el resto del juego`;
+
+        }else if (this.valor == imagenCarta[10].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[10].foto}" alt="${imagenCarta[10].numero}">`)
+            regla.innerHTML = `Podes rebotar tragos (cuando te los repartan)`;
+
+        }else if (this.valor == imagenCarta[11].numero){pozo.innerHTML = " ";
+            pozo.insertAdjacentHTML("afterbegin",`<img src="${imagenCarta[11].foto}" alt="${imagenCarta[11].numero}">`)
+            regla.innerHTML = `Sos Barney, Antes que alguien saque una carta tiene que decir toma Barney y tomas 1 trago`
+
         }
-    
+     
+        })
         return carta;
     }
  }
@@ -74,7 +100,6 @@ function sacarCartas(){
     
     cartaSacada.push(carta1);
 
-    console.log(cartaSacada)
 
     //Muestra las cartas que van saliendo
      const listaCartas = document.createElement("li");
@@ -96,8 +121,10 @@ function sacarCartas(){
         .then((willDelete) => {
             if (willDelete) {
                 sessionStorage.clear(carta1);
-               cartaSacada.splice(cartaSacada.length);
-                cementerioCartas.innerHTML = '';
+                cartaSacada.splice(cartaSacada.length);
+                cementerioCartas.innerHTML = ' ';
+                pozo.innerHTML = " ";
+                regla.innerHTML = ' ';
             swal("Adios historial!", {
                 icon: "success",
             });
@@ -106,6 +133,9 @@ function sacarCartas(){
             }
         });
     })
+ 
 }
+
+
 
 mazo.addEventListener("click", sacarCartas)
